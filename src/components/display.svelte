@@ -16,6 +16,7 @@ import {
 		font-size: 6rem;
 		text-transform: capitalize;
 		text-align: center;
+		font-weight: lighter;
 	}
 
 	p.instructions {

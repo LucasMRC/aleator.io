@@ -73,18 +73,18 @@
 		font-size: 1.5rem;
 		width: max-content;
 		display: grid;
-		grid-template-columns: 1fr 3fr 3fr;
+		grid-template-columns: 4fr 2fr;
 		align-items: center;
 		color: var(--font-secondary-color);
 	}
 
 	div.settings label.timer-label {
 		padding: .25rem .75rem;
-		grid-column: span 2;
+		/* grid-column: span 2; */
 	}
 
 	div.settings > div.select-container {
-		grid-column: span 3;
+		grid-column: span 2;
 	}
 
 	div.settings > button {
@@ -110,7 +110,7 @@
 	}
 
 	input.timer {
-		grid-column: span 3;
+		grid-column: span 2;
 		pointer-events: none;
 		color: var(--font-primary-color);
 		outline: none;
@@ -120,6 +120,7 @@
 		width: 25rem;
 		height: 3rem;
 		font-family: inherit;
+		font-weight: bold;
 		text-align: center;
 	}
 
@@ -153,6 +154,8 @@
         div.settings {
 			font-size: 1.1rem;
 			row-gap: .25rem;
+			top: 2rem;
+			grid-template-columns: 4fr 3fr;
 		}
 
 		div.settings > button {
@@ -170,6 +173,7 @@
 		}
 		input.timer {
 			width: 17rem;
+			font-size: 2rem;
 		}
     }
 </style>

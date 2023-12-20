@@ -74,4 +74,12 @@
 		background-color: var(--background-primary-color);
 		color: var(--font-primary-color)
 	}
+
+	@media screen
+	and (orientation: landscape)
+	and (height < 640px) {
+		main.screen {
+			grid-template-rows: 2fr 7fr;
+		}
+	}
 </style>
