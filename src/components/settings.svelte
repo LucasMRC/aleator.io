@@ -91,7 +91,7 @@
 	div.settings > button {
 		background: transparent;
 		position: absolute;
-		color: var(--font-secondary-color);
+		color: var(--font-primary-color);
 		border-radius: .3rem;
 		font-weight: bold;
 		bottom: 0;
@@ -113,7 +113,7 @@
 	input.timer {
 		grid-column: span 2;
 		pointer-events: none;
-		color: var(--font-secondary-color);
+		color: var(--font-primary-color);
 		outline: none;
 		border: none;
 		background: transparent;

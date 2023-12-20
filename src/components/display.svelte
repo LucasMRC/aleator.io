@@ -3,20 +3,19 @@ import {
 		word,
 		displayingTimer
 	} from '../store';
+    import WordWrapper from './word-wrapper.svelte';
 
 </script>
 
 <div class="display-container">
 	<p class={`instructions${$displayingTimer ? ' hidden' : ''}`}>Click/Tap o Espacio</p>
-    <h1 id="word">{$word}</h1>
+	<WordWrapper />
 </div>
 
 <style>
-    h1#word {
-		font-size: 6rem;
-		text-transform: capitalize;
-		text-align: center;
-		font-weight: lighter;
+	div.display-container {
+		display: grid;
+		justify-items: center;
 	}
 
 	p.instructions {
@@ -33,10 +32,6 @@ import {
 	@media screen
 	and (orientation: landscape)
 	and (height < 640px) {
-		h1#word {
-			font-size: 2.5rem;
-		}
-
 		div.display-container {
 			grid-row: 2;
 		}
