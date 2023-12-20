@@ -7,6 +7,10 @@ body, html {
   user-select: none;
 }
 
+* {
+  transition: background .25s ease-in-out, color .25s ease-in-out, opacity .25s ease-in-out;
+}
+
 ::-webkit-scrollbar {
   width: .25rem;
 }
@@ -18,4 +22,24 @@ body, html {
 
 ::-webkit-scrollbar-track {
   background: #333;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  /* Webkit */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  /* Firefox */
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+
+*.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

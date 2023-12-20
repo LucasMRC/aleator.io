@@ -2,14 +2,14 @@
     export let value: boolean;
     export let name: string;
     export let id: string;
-    export let options: { value: string | number | boolean; label: string }[];
+    export let options: { value: boolean; label: string }[];
     export let onChange: (e: Event) => void;
 </script>
 
-<div class="options-container">
+<div class="options-container no-new-word">
     {#each options as option}
-        <input type="radio" on:change={onChange} name={name} id={id + "-" + option.value} value={option.value} checked={value === option.value} hidden />
-        <label class="switch" for={id + "-" + option.value}>
+        <label class="switch no-new-word">
+            <input class="no-new-word" type="radio" on:change={onChange} name={name} id={id} value={option.value} checked={value === option.value} hidden />
             {option.label}
         </label>
     {/each}
@@ -17,8 +17,6 @@
 
 <style>
     div.options-container {
-        background: var(--secondary-color);
-        margin-bottom: 1rem;
         border-radius: .5rem;
         display: flex;
         gap: .25rem;
@@ -33,14 +31,14 @@
         text-align: center;
         height: 100%;
         line-height: calc(3rem - 50%);
-        transition: all .25s ease-in-out;
         cursor: pointer;
         color: var(--disabled-font-color);
     }
 
-    input[type="radio"]:checked + label.switch  {
-        background: #828282;
+    label.switch:has(input[type="radio"]:checked) {
+        background: var(--background-secondary-color);
         color: var(--primary-font-color);
         border-radius: .5rem;
+        font-weight: bold;
     }
 </style>
