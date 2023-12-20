@@ -80,7 +80,7 @@
     }
 
     button.custom-input {
-        padding-inline: .75rem;
+        padding: .25rem .75rem;
         position: relative;
     }
 

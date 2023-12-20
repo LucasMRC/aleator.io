@@ -6,7 +6,7 @@
     export let dictionary: any;
     export let handleNewWord: () => void;
 
-	let timerInterval: number;
+	const timerIntervals: number[] = [];
 
 	const dictionaryOptions = [
 		{ label: `Diccionario 1 (pal. ${dictionary.one.length})`, value: "one" },
@@ -22,8 +22,12 @@
 		}
 		else if ($timer <= 5) return;
 		else timer.update(prev => --prev);
-		if (timerInterval) clearInterval(timerInterval);
-		timerInterval = setInterval(handleNewWord, $timer * 1000);
+		if (timerIntervals.length) {
+			for (const interval of timerIntervals) {
+				clearInterval(interval);
+			}
+		}
+		timerIntervals.push(setInterval(handleNewWord, $timer * 1000));
 	};
 
 	const handleDictionaryChange = (e: Event) => {
@@ -34,8 +38,12 @@
 	const handleDisplayTimer = (e: Event) => {
 		const input = e.target as HTMLInputElement;
 		if (!input.checked) return;
-		if (timerInterval) clearInterval(timerInterval);
-		if (input.value === 'true') timerInterval = setInterval(handleNewWord, $timer * 1000);
+		if (timerIntervals.length) {
+			for (const interval of timerIntervals) {
+				clearInterval(interval);
+			}
+		}
+		if (input.value === 'true') timerIntervals.push(setInterval(handleNewWord, $timer * 1000));
 		displayingTimer.set(input.value === 'true');
 	};
 
@@ -65,13 +73,13 @@
 		font-size: 1.5rem;
 		width: max-content;
 		display: grid;
-		grid-template-columns: 1fr 3fr 2fr;
+		grid-template-columns: 1fr 3fr 3fr;
 		align-items: center;
 		color: var(--font-secondary-color);
 	}
 
 	div.settings label.timer-label {
-		padding: .75rem;
+		padding: .25rem .75rem;
 		grid-column: span 2;
 	}
 
