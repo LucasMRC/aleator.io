@@ -17,7 +17,10 @@
 	};
 
 	onMount(() => {
+		const storedTheme = localStorage.getItem('theme');
+		if (storedTheme) theme.set(storedTheme as Theme);
 		document.addEventListener("keydown", (e: KeyboardEvent) => {
+			if ($displayingTimer) return;
 			if (e.code === 'Space')
 				handleNewWord();
 		});

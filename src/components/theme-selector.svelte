@@ -7,6 +7,7 @@
 		if (input.checked) {
 			const newTheme = input.id as Theme;
 			theme.set(newTheme);
+			localStorage.setItem('theme', newTheme);
 		}
 	};
 

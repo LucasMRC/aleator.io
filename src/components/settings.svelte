@@ -112,7 +112,7 @@
 	input.timer {
 		grid-column: span 2;
 		pointer-events: none;
-		color: var(--font-primary-color);
+		color: var(--font-secondary-color);
 		outline: none;
 		border: none;
 		background: transparent;
