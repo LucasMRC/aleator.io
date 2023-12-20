@@ -33,12 +33,12 @@
         line-height: calc(3rem - 50%);
         cursor: pointer;
         color: var(--disabled-font-color);
+        border-radius: .5rem;
     }
 
     label.switch:has(input[type="radio"]:checked) {
         background: var(--background-secondary-color);
         color: var(--primary-font-color);
-        border-radius: .5rem;
         font-weight: bold;
     }
 </style>

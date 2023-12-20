@@ -9,6 +9,7 @@ body, html {
 
 * {
   transition: background .25s ease-in-out, color .25s ease-in-out, opacity .25s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {
@@ -37,6 +38,10 @@ input[type=number] {
   -moz-appearance: textfield;
   appearance: textfield;
   margin: 0;
+}
+
+input, button {
+  outline: none;
 }
 
 *.hidden {
