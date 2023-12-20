@@ -17,9 +17,9 @@
     $: opened = $openedSelect === selectId;
 
     function handleClickOnOption(e: Event) {
+        openedSelect.set('');
         e.preventDefault();
         handleChange(e);
-        openedSelect.set('');
     }
 
     function handleToggleMenu(e: Event) {
@@ -49,16 +49,20 @@
     {#if opened}
     <div class="select-menu no-new-word">
             {#each options as option}
-                <input
-                    type="radio"
-                    id={`${name}-${option.value}`}
-                    {name}
-                    checked={value === option.value || !value && option.default}
-                    value={option.value}
-                    on:change={handleClickOnOption}
-                    hidden
-                />
-                <label class="select-option no-new-word" for={`${name}-${option.value}`}>{option.label}</label>
+                <label class="select-option no-new-word">
+                    <input
+                        type="radio"
+                        class="no-new-word"
+                        id={option.value}
+                        {name}
+                        checked={value === option.value || !value && option.default}
+                        value={option.value}
+                        on:change={handleClickOnOption}
+                        on:click={() => value === option.value && openedSelect.set('')}
+                        hidden
+                    />
+                    {option.label}
+                </label>
             {/each}
         </div>
     {/if}
@@ -105,7 +109,11 @@
         overflow-y: auto;
     }
 
-    input:checked + label.select-option {
+    label.select-option:not(:has(input:checked)):hover {
+        cursor: pointer;
+        color: var(--font-primary-color);
+    }
+    label.select-option:has(input:checked) {
         font-weight: bold;
     }
 
@@ -115,8 +123,4 @@
         line-height: 1.5;
     }
 
-    label.select-option:hover {
-        cursor: pointer;
-        color: var(--font-primary-color);
-    }
 </style>

@@ -32,6 +32,7 @@
 
 	const handleDictionaryChange = (e: Event) => {
 		const input = e.target as HTMLInputElement;
+		if (input.value === $chosenDictionary) return;
 		chosenDictionary.set(input.value as Dictionary);
 	}
 
