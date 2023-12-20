@@ -17,12 +17,12 @@
 
 	const handleTimerChange = (action: 'add' | 'subtract') => {
 		if (action === 'add') {
-			if ($timer >= 60) timer.set(60);
+			if ($timer >= 60) return;
 			else timer.update(prev => ++prev);
 		}
-		else if ($timer <= 5) timer.set(5);
+		else if ($timer <= 5) return;
 		else timer.update(prev => --prev);
-		clearInterval(timerInterval);
+		if (timerInterval) clearInterval(timerInterval);
 		timerInterval = setInterval(handleNewWord, $timer * 1000);
 	};
 
@@ -33,8 +33,9 @@
 
 	const handleDisplayTimer = (e: Event) => {
 		const input = e.target as HTMLInputElement;
-		clearInterval(timerInterval);
-		if (input.checked && input.value === 'true') timerInterval = setInterval(handleNewWord, $timer * 1000);
+		if (!input.checked) return;
+		if (timerInterval) clearInterval(timerInterval);
+		if (input.value === 'true') timerInterval = setInterval(handleNewWord, $timer * 1000);
 		displayingTimer.set(input.value === 'true');
 	};
 
@@ -138,7 +139,9 @@
 		}
 	}
 
-    @container (height < 640px) {
+    @media screen
+	and (orientation: landscape)
+	and (height < 640px) {
         div.settings {
 			font-size: 1.1rem;
 			row-gap: .25rem;

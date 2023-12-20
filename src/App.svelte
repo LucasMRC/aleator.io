@@ -24,7 +24,6 @@
 		document.body.addEventListener('click', e => {
 			e.stopPropagation();
 			const target = e.target as HTMLElement;
-			console.log(target.classList);
 			if ($displayingTimer || target.classList.contains('no-new-word')) return;
 			handleNewWord();
 		});
@@ -67,8 +66,8 @@
 	main.screen {
 		container-type: inline-size;
 		position: relative;
-		height: 100vh;
-		width: 100vw;
+		height: 100dvh;
+		width: 100dvw;
 		display: grid;
 		place-items: center;
 		font-family: Inconsolata;
