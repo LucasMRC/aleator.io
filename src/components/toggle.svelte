@@ -7,9 +7,10 @@
 </script>
 
 <div class="options-container no-new-word">
+    <input type="text" name="timer-value" id={id} {value} hidden />
     {#each options as option}
         <label class="switch no-new-word">
-            <input class="no-new-word" type="radio" on:change={onChange} name={name} id={id} value={option.value} checked={value === option.value} hidden />
+            <input class="no-new-word" type="radio" on:change={onChange} name={name} value={option.value} checked={value === option.value} hidden />
             {option.label}
         </label>
     {/each}
