@@ -10,6 +10,7 @@
     import ThemeSelector from './components/theme-selector.svelte';
     import Settings from './components/settings.svelte';
     import Display from './components/display.svelte';
+    import BuyMeACoffee from './components/coffee.svelte';
 
 	const handleNewWord = () => {
 		const newWord = dictionary[$chosenDictionary][Math.floor(Math.random() * dictionary[$chosenDictionary].length)];
@@ -35,9 +36,10 @@
 </script>
 
 <main class="screen" data-theme={$theme}>
-	<ThemeSelector />
 	<Settings dictionary={dictionary} handleNewWord={handleNewWord} />
 	<Display />
+	<ThemeSelector />
+	<BuyMeACoffee />
 </main>
 
 <style>
