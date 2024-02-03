@@ -1,6 +1,5 @@
 <script lang="ts">
     import { timer, displayingTimer, word } from '../store'
-    import { formatTime } from "../utils";
 
     let interval: number;
 
@@ -19,7 +18,11 @@
     {#if $displayingTimer}
         <div class="progress-bar" style="--progress-value: {($timer + 1 - countdown) / $timer * 100};" />
     {/if}
-        <h1 id="word">{$word}</h1>
+    {#await $word}
+        <h1 id="word">Cargando...</h1>
+    {:then word}
+        <h1 id="word">{word}</h1>
+    {/await}
 </div>
 
 <style>

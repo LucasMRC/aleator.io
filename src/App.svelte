@@ -46,8 +46,8 @@
 	:root {
 		--light-theme-primary-background-color: #F4DBD8;
 		--light-theme-secondary-background-color: #edcfcc;
-		--light-theme-primary-font-color:  #BEA8A7;
-		--light-theme-secondary-font-color:  #736160;
+		--light-theme-primary-font-color:  #3f302f;
+		--light-theme-secondary-font-color:  #352D2C;
 		--dark-theme-primary-background-color: #2B2D42;
 		--dark-theme-secondary-background-color: #393c54;
 		--dark-theme-primary-font-color: #8D99AE;

@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Inconsolata';
   src: url('/fonts/Inconsolata-ExtraLight.ttf');
+  font-display: swap;
 }
 
 body, html {

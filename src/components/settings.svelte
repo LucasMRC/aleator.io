@@ -60,7 +60,7 @@
     </div>
     <label class="no-new-word timer-label" for="timer">Timer</label>
     <Toggle value={$displayingTimer} name="timer-toggle" id="timer" onChange={handleDisplayTimer} options={toggleOptions} />
-    <input class="no-new-word timer{$displayingTimer ? '' : ' hidden'}" type="number" id="seconds" value={$timer}>
+    <input class="no-new-word timer{$displayingTimer ? '' : ' hidden'}" type="number" id="seconds" value={$timer} aria-label="timer">
     <button on:click={() => handleTimerChange('add')} class="no-new-word add{$displayingTimer ? '' : ' hidden'}">+</button>
     <button on:click={() => handleTimerChange('subtract')} class="no-new-word subtract{$displayingTimer ? '' : ' hidden'}">-</button>
 </div>
