@@ -1,8 +1,17 @@
 <script lang="ts">
-    export let type: IconType;
-    export let color: string;
-    export let size = 48;
-    export let viewBox = "0 0 48 48";
+    interface Props {
+        type: IconType;
+        color: string;
+        size?: number;
+        viewBox?: string;
+    }
+
+    let {
+        type,
+        color,
+        size = 48,
+        viewBox = "0 0 48 48"
+    }: Props = $props();
 </script>
 
 <svg class="no-new-word" width={size} height={size} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">

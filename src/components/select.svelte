@@ -4,17 +4,26 @@
     import Icon from "./icon.svelte";
     import { theme } from "../store";
 
-    export let name: string | undefined;
-    export let value: string | null;
-    export let options: { value: string | null; label: string; default?: boolean }[] = [];
-    export let handleChange: (e: Event) => void;
+    interface Props {
+        name: string | undefined;
+        value: string | null;
+        options?: { value: string | null; label: string; default?: boolean }[];
+        handleChange: (e: Event) => void;
+    }
+
+    let {
+        name,
+        value,
+        options = [],
+        handleChange
+    }: Props = $props();
 
     const selectId = generateUUID();
 
-    $: inputValue = options.find((option) =>
+    let inputValue = $derived(options.find((option) =>
         value ? option.value === value : option.default
-    )?.label ?? '';
-    $: opened = $openedSelect === selectId;
+    )?.label ?? '');
+    let opened = $derived($openedSelect === selectId);
 
     function handleClickOnOption(e: Event) {
         openedSelect.set('');
@@ -40,7 +49,7 @@
             <option value={option.value}>{option.label}</option>
         {/each}
     </select>
-    <button class="custom-input no-new-word" id={selectId} on:click={handleToggleMenu}>
+    <button class="custom-input no-new-word" id={selectId} onclick={handleToggleMenu}>
         {inputValue}
         <span class="select-icon no-new-word">
             <Icon color={$theme === 'light' ? '#BEA8A7' : '#8D99AE'} size={16} type={opened ? 'chevron_sm_up' : 'chevron_sm_down'} viewBox="0 0 16 16" />
@@ -57,8 +66,8 @@
                         {name}
                         checked={value === option.value || !value && option.default}
                         value={option.value}
-                        on:change={handleClickOnOption}
-                        on:click={() => value === option.value && openedSelect.set('')}
+                        onchange={handleClickOnOption}
+                        onclick={() => value === option.value && openedSelect.set('')}
                         hidden
                     />
                     {option.label}
@@ -113,7 +122,7 @@
         cursor: pointer;
         color: var(--font-primary-color);
     }
-    label.select-option:has(input:checked) {
+    label.select-option:has(:global(input:checked)) {
         font-weight: bold;
     }
 

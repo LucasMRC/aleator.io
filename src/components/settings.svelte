@@ -3,8 +3,12 @@
     import Select from "./select.svelte";
     import Toggle from "./toggle.svelte";
 
-    export let dictionary: any;
-    export let handleNewWord: () => void;
+	interface Props {
+		dictionary: any;
+		handleNewWord: () => void;
+	}
+
+	let { dictionary, handleNewWord }: Props = $props();
 
 	const timerIntervals: number[] = [];
 
@@ -61,8 +65,8 @@
     <label class="no-new-word timer-label" for="timer">Timer</label>
     <Toggle value={$displayingTimer} name="timer-toggle" id="timer" onChange={handleDisplayTimer} options={toggleOptions} />
     <input class="no-new-word timer{$displayingTimer ? '' : ' hidden'}" type="number" id="seconds" value={$timer} aria-label="timer">
-    <button on:click={() => handleTimerChange('add')} class="no-new-word add{$displayingTimer ? '' : ' hidden'}">+</button>
-    <button on:click={() => handleTimerChange('subtract')} class="no-new-word subtract{$displayingTimer ? '' : ' hidden'}">-</button>
+    <button onclick={() => handleTimerChange('add')} class="no-new-word add{$displayingTimer ? '' : ' hidden'}">+</button>
+    <button onclick={() => handleTimerChange('subtract')} class="no-new-word subtract{$displayingTimer ? '' : ' hidden'}">-</button>
 </div>
 
 <style>

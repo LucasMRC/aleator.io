@@ -16,11 +16,11 @@
 <div class="theme-selector no-new-word">
     <label class="no-new-word">
         <Icon size={24} type="sun" color={$theme === 'light' ? '#352D2C' : '#8D99AE'} viewBox="0 0 85 85"/>
-        <input on:change={handleThemeChange} class="no-new-word" type="radio" id="light" name="theme" hidden />
+        <input onchange={handleThemeChange} class="no-new-word" type="radio" id="light" name="theme" hidden />
     </label>
     <label class="no-new-word">
         <Icon size={24} type="moon" color={$theme === 'light' ? '#352D2C' : '#8D99AE'} viewBox="0 -5 100 100"/>
-        <input on:change={handleThemeChange} class="no-new-word" type="radio" id="dark" name="theme" hidden />
+        <input onchange={handleThemeChange} class="no-new-word" type="radio" id="dark" name="theme" hidden />
     </label>
 </div>
 

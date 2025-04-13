@@ -1,9 +1,6 @@
 <script lang="ts">
-import {
-		word,
-		displayingTimer
-	} from '../store';
-    import WordWrapper from './word-wrapper.svelte';
+import { displayingTimer } from '../store';
+import WordWrapper from './word-wrapper.svelte';
 
 </script>
 
@@ -13,27 +10,21 @@ import {
 </div>
 
 <style>
+div.display-container {
+	display: grid;
+	justify-items: center;
+}
+
+p.instructions {
+	text-align: center;
+	font-weight: bold;
+}
+
+@media screen
+and (orientation: landscape)
+and (height < 640px) {
 	div.display-container {
-		display: grid;
-		justify-items: center;
+		grid-row: 2;
 	}
-
-	p.instructions {
-		text-align: center;
-		font-weight: bold;
-	}
-
-    @container (width < 640px) {
-		h1#word {
-			font-size: 2.5rem;
-		}
-	}
-
-	@media screen
-	and (orientation: landscape)
-	and (height < 640px) {
-		div.display-container {
-			grid-row: 2;
-		}
-	}
+}
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-	import * as dictionary from './diccionario.json';
+	import * as dictionary from './diccionario.json' assert { type: "Dictionary" };
 	import {
 		word,
 		theme,

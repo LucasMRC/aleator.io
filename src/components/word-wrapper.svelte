@@ -1,28 +1,24 @@
 <script lang="ts">
     import { timer, displayingTimer, word } from '../store'
 
-    let interval: number;
+    let interval: number | undefined;
 
-    $: countdown = $displayingTimer ? $timer : 0;
-    $: {
+    let countdown = $derived($displayingTimer ? $timer : 0);
+    $effect(() => {
         if (interval) clearInterval(interval);
         interval = setInterval(() => {
             if (!$displayingTimer) return;
             if (countdown === 1) countdown = $timer;
             else countdown -= 1;
         }, 1000);
-    }
+    });
 </script>
 
 <div class="circle">
     {#if $displayingTimer}
-        <div class="progress-bar" style="--progress-value: {($timer + 1 - countdown) / $timer * 100};" />
+        <div class="progress-bar" style="--progress-value: {($timer + 1 - countdown) / $timer * 100};"></div>
     {/if}
-    {#await $word}
-        <h1 id="word">Cargando...</h1>
-    {:then word}
-        <h1 id="word">{word}</h1>
-    {/await}
+    <h1 id="word">{$word}</h1>
 </div>
 
 <style>

@@ -1,16 +1,26 @@
 <script lang="ts">
-    export let value: boolean;
-    export let name: string;
-    export let id: string;
-    export let options: { value: boolean; label: string }[];
-    export let onChange: (e: Event) => void;
+    interface Props {
+        value: boolean;
+        name: string;
+        id: string;
+        options: { value: boolean; label: string }[];
+        onChange: (e: Event) => void;
+    }
+
+    let {
+        value,
+        name,
+        id,
+        options,
+        onChange
+    }: Props = $props();
 </script>
 
 <div class="options-container no-new-word">
     <input type="text" name="timer-value" id={id} {value} hidden />
     {#each options as option}
         <label class="switch no-new-word">
-            <input class="no-new-word" type="radio" on:change={onChange} name={name} value={option.value} checked={value === option.value} hidden />
+            <input class="no-new-word" type="radio" onchange={onChange} name={name} value={option.value} checked={value === option.value} hidden />
             {option.label}
         </label>
     {/each}
@@ -37,7 +47,7 @@
         border-radius: .5rem;
     }
 
-    label.switch:has(input[type="radio"]:checked) {
+    label.switch:has(:global(input[type="radio"]:checked)) {
         background: var(--background-secondary-color);
         color: var(--primary-font-color);
         font-weight: bold;
