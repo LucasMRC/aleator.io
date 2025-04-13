@@ -16,7 +16,6 @@
 		{ label: `Dic. 1 (${dictionary.one.length} palabras)`, value: "one" },
 		{ label: `Dic. 2 (${dictionary.two.length} palabras)`, value: "two" },
 		{ label: `Dic. 3 (${dictionary.three.length} palabras)`, value: "three" },
-		{ label: `Dic. 4 (${dictionary.four.length} palabras)`, value: "four" }
 	];
 
 	const handleTimerChange = (action: 'add' | 'subtract') => {
