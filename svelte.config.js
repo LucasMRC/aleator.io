@@ -1,6 +1,6 @@
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 export default {
-    base: "/aleator.io/",
-    preprocess: vitePreprocess()
+	base: "/aleator.io/",
+	preprocess: vitePreprocess()
 };

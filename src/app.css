@@ -1,51 +1,51 @@
 @font-face {
-  font-family: 'Inconsolata';
-  src: url('/fonts/Inconsolata-ExtraLight.ttf');
-  font-display: swap;
+	font-family: 'Inconsolata';
+	src: url('/fonts/Inconsolata-ExtraLight.ttf');
+	font-display: swap;
 }
 
 body, html {
-  user-select: none;
+	user-select: none;
 }
 
 * {
-  transition: background .25s ease-in-out, color .25s ease-in-out, opacity .25s ease-in-out;
-  -webkit-tap-highlight-color: transparent;
+	transition: background .25s ease-in-out, color .25s ease-in-out, opacity .25s ease-in-out;
+	-webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {
-  width: .25rem;
+	width: .25rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 50%;
+	background: #222;
+	border-radius: 50%;
 }
 
 ::-webkit-scrollbar-track {
-  background: #333;
+	background: #333;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  /* Webkit */
-  -webkit-appearance: none;
-  margin: 0;
+	/* Webkit */
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 
 input[type=number] {
-  /* Firefox */
-  -moz-appearance: textfield;
-  appearance: textfield;
-  margin: 0;
+	/* Firefox */
+	-moz-appearance: textfield;
+	appearance: textfield;
+	margin: 0;
 }
 
 input, button {
-  outline: none;
+	outline: none;
 }
 
 *.hidden {
-  opacity: 0;
-  pointer-events: none;
+	opacity: 0;
+	pointer-events: none;
 }
