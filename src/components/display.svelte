@@ -2,11 +2,13 @@
 import { displayingTimer } from '../store';
 import WordWrapper from './word-wrapper.svelte';
 
+let { handleNewWord } = $props()
+
 </script>
 
 <div class="display-container">
 	<p class={`instructions${$displayingTimer ? ' hidden' : ''}`}>Click/Tap o Espacio</p>
-	<WordWrapper />
+	<WordWrapper {handleNewWord} />
 </div>
 
 <style>

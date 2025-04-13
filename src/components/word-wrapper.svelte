@@ -1,22 +1,23 @@
 <script lang="ts">
-import { timer, displayingTimer, word } from '../store'
+import { timer, displayingTimer, word, timeoutId } from '../store'
+import { createInterval } from '../utils'
 
-let interval: number | undefined;
+let { handleNewWord } = $props();
 
 let countdown = $derived($displayingTimer ? $timer : 0);
-$effect(() => {
-	if (interval) clearInterval(interval);
-	interval = setInterval(() => {
-		if (!$displayingTimer) return;
-		if (countdown === 1) countdown = $timer;
-			else countdown -= 1;
-	}, 1000);
-});
+createInterval(() => {
+	if ($timeoutId) clearTimeout($timeoutId);
+	if (!$displayingTimer) return;
+	if (!countdown) {
+		countdown = $timer - 1;
+		handleNewWord();
+	} else countdown -= 1;
+}, 1000);
 </script>
 
 <div class="circle">
 	{#if $displayingTimer}
-		<div class="progress-bar" style="--progress-value: {($timer + 1 - countdown) / $timer * 100};"></div>
+		<div class="progress-bar" style="--progress-value: {($timer	- countdown) / $timer * 100};"></div>
 	{/if}
 	<h1 id="word">{$word}</h1>
 </div>

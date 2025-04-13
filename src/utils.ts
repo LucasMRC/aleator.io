@@ -1,3 +1,5 @@
+import { timeoutId } from './store'
+
 export function generateUUID(): string {
 	const timestamp: number = new Date().getTime();
 	const randomValue1: string = Math.random().toString(36).substring(2, 10);
@@ -21,4 +23,20 @@ export function formatTime(seconds: number): string {
 	};
 
 	return `${addLeadingZero(minutes)}:${addLeadingZero(remainingSeconds)}`;
+}
+
+export function createInterval(cb: () => void, interval: number) {
+	let lastTime = Date.now();
+	let lastDelay = interval;
+
+	function tick() {
+		cb();
+		const now = Date.now();
+		const dTime = now - lastTime;
+		lastTime = now;
+		lastDelay = interval + lastDelay - dTime;
+		timeoutId.set(setTimeout(tick, lastDelay));
+	}
+	cb();
+	timeoutId.set(setTimeout(tick, 1000));
 }

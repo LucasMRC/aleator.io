@@ -1,5 +1,5 @@
 <script lang="ts">
-import { chosenDictionary, displayingTimer, timer } from "../store";
+import { chosenDictionary, displayingTimer, timer, timeoutId } from "../store";
 import Select from "./select.svelte";
 import Toggle from "./toggle.svelte";
 
@@ -8,9 +8,7 @@ interface Props {
 	handleNewWord: () => void;
 }
 
-let { dictionary, handleNewWord }: Props = $props();
-
-const timerIntervals: number[] = [];
+let { dictionary }: Props = $props();
 
 const dictionaryOptions = [
 	{ label: `Dic. 1 (${dictionary.one.length} palabras)`, value: "one" },
@@ -25,29 +23,18 @@ const handleTimerChange = (action: 'add' | 'subtract') => {
 	}
 	else if ($timer <= 5) return;
 		else timer.update(prev => --prev);
-	if (timerIntervals.length) {
-		for (const interval of timerIntervals) {
-			clearInterval(interval);
-		}
-	}
-	timerIntervals.push(setInterval(handleNewWord, $timer * 1000));
 };
 
 const handleDictionaryChange = (e: Event) => {
 	const input = e.target as HTMLInputElement;
-	if (input.value === $chosenDictionary) return;
-	chosenDictionary.set(input.value as Dictionary);
+	const value = input.value as "one" | "two" | "three"
+	if (value === $chosenDictionary) return;
+	chosenDictionary.set(value);
 }
 
 const handleDisplayTimer = (e: Event) => {
 	const input = e.target as HTMLInputElement;
-	if (!input.checked) return;
-	if (timerIntervals.length) {
-		for (const interval of timerIntervals) {
-			clearInterval(interval);
-		}
-	}
-	if (input.value === 'true') timerIntervals.push(setInterval(handleNewWord, $timer * 1000));
+	if (!input.checked) return clearTimeout($timeoutId);
 	displayingTimer.set(input.value === 'true');
 };
 

@@ -36,8 +36,8 @@ onMount(() => {
 </script>
 
 <main class="screen" data-theme={$theme}>
-	<Settings dictionary={dictionary} handleNewWord={handleNewWord} />
-	<Display />
+	<Settings {dictionary} />
+	<Display {handleNewWord} />
 	<ThemeSelector />
 	<BuyMeACoffee />
 </main>

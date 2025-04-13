@@ -5,4 +5,5 @@ export const openedSelect = writable<string>('');
 export const word = writable<string>('');
 export const timer = writable<number>(10);
 export const displayingTimer = writable(false);
-export const chosenDictionary = writable<string>("one");
+export const chosenDictionary = writable<"one" | "two" | "three">("one");
+export const timeoutId = writable<number | undefined>();

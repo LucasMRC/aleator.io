@@ -4,5 +4,7 @@
 type IconType = 'chevron_right' | 'chevron_sm_up' | 'chevron_sm_down' | 'pause' | 'play' | 'sun' | 'moon' | 'coffee';
 type Theme = 'light' | 'dark';
 type Dictionary = {
-	[index: string]: string[]
+	one: string[]
+	two: string[]
+	three: string[]
 }
